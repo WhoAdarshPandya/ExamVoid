@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodbite</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <nav class="navbar container navbar-expand-lg navbar-light">
+        <div class="container">
+            @Html.ActionLink("Foody","Index",null,new { Class = "navbar-brand"})
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav float-right ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Insert","Insert",null,new { Class="nav-link"})
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Get Items", "GetAllItems", null, new { Class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Delete", "DeleteItem", null, new { Class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Update", "UpdateItem", null, new { Class = "nav-link" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div class="container fixed-bottom">
+        <hr />
+        <footer>
+            <p class="text-dark text-center">&copy; 2020 - All Rigths Reserved - Foodbite.Inc</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/Scripts/css")
+
+</body>
+</html>
