@@ -1,4 +1,29 @@
-﻿
+﻿@using ExamVoid.Models
+@model List<Food>
 
-<h2>GetAllItems</h2>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <td scope="col">Availablity</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@i.id</th>
+                <td>@i.name</td>
+                <td>@i.category</td>
+                <td>@i.price</td>
+                <td>@i.avail</td>
+            </tr>
+         }
+        </tbody>
+</table>
 

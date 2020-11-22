@@ -17,27 +17,42 @@ namespace ExamVoid.Controllers
 
         public ActionResult Insert()
         {
-            SqlPojo.insertFood("biryani", "rice", "150", "true");
 
             return View();
         }
 
         public ActionResult GetAllItems()
         {
-            SqlPojo.getAllFoodItemsInDb();
-            return View();
+            List<Food> foodList = SqlPojo.getAllFoodItemsInDb();
+            return View(foodList);
         }
 
         public ActionResult DeleteItem()
         {
-            SqlPojo.DeleteTheItem("3");
             return View();
         }
         
         public ActionResult UpdateItem()
         {
-            SqlPojo.UpdateTheItem("5", "hakka nodules", "chaines", "180", "false");
             return View();
+        }
+
+        public ActionResult InsertTheFood(Food f)
+        {
+            SqlPojo.insertFood(f.name, f.category, f.price, f.avail);
+            return RedirectToAction("GetAllItems");
+        }
+
+        public ActionResult DeleteTheItem(deleteModel d)
+        {
+            SqlPojo.DeleteTheItem(d.id);
+            return RedirectToAction("GetAllItems");
+        }
+
+        public ActionResult UpdateTheItem(Food f)
+        {
+            SqlPojo.UpdateTheItem(f.id.ToString(), f.name, f.category, f.price, f.avail);
+            return RedirectToAction("GetAllItems");
         }
     }
 }
